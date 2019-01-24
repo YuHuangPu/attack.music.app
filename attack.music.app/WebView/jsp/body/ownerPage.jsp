@@ -55,7 +55,7 @@
 					  </div>
 					  <div class="card-body">
 					    <blockquote class="blockquote mb-0">
-					      <p>檔著用, 改天空了再修 :D TEST</p>
+					      <p>檔著用, 改天空了再修 :D TEST 2</p>
 					      <footer class="blockquote-footer">黃子育 <cite title="Source Title">2018-12-06</cite></footer>
 					    </blockquote>
 					  </div>
