@@ -1,0 +1,3 @@
+SELECT aaa.* FROM (SELECT a.ID as "KEY", IF(a.STATUS = 'N', concat(a.NAME, '(¤w§R°£)') , a.NAME)  as "VALUE" 
+FROM FACTORY a
+WHERE a.STATUS = 'S' or a.STATUS = 'N') as aaa

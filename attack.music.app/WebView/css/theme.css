@@ -1,0 +1,31 @@
+html, body{
+	font-family:Consolas, Microsoft JhengHei;
+}
+.allbody {
+	display: table;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	background-color: #DDD;
+	-webkit-box-shadow:inset  0px 0px 100px 30px rgba(0,0,0,.5) ;
+}
+.menu{
+	display: table;
+}
+.main {
+	/*display: table;*/
+}
+.main .sub{
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.footer{
+	/*display: table-footer-group;*/
+}
+.bootstrap-select.form-control, input.form-control, textarea.form-control{
+	border: 1px solid #006dda!important;
+	border-color: #00000030!important;
+}
+.bootstrap-select.form-control .btn-light{
+	background-color: #fff;
+}

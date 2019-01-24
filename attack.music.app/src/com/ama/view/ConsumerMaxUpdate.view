@@ -1,0 +1,4 @@
+SELECT DATE_FORMAT(MAX(Q.Max_Update),'Last Updated at %Y-%m-%d %T') as "Max_Update" 
+FROM (SELECT C.UPDATE_DATE AS "Max_Update" FROM CONSUMER C 
+UNION 
+SELECT C.CREATE_DATE AS "Max_Update" FROM CONSUMER C) AS Q

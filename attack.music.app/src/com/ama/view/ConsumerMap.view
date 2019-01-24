@@ -1,0 +1,3 @@
+SELECT aaa.* FROM (SELECT C.ID as "KEY", IF(C.STATUS = 'N', concat(C.NAME, '(¤w§R°£)') , C.NAME)  as "VALUE" 
+FROM CONSUMER C 
+WHERE C.STATUS in ('S', 'N', 'D')) as aaa

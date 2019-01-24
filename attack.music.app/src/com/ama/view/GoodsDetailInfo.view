@@ -1,0 +1,4 @@
+SELECT gd.*
+	, DATE_FORMAT(gd.CREATE_DATE,'%Y-%m-%d') as "Create_DATE"
+FROM GOODS_DETAIL gd WHERE gd.STATUS in ('I', 'O')
+ORDER BY gd.CREATE_DATE desc;

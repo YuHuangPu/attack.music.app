@@ -1,0 +1,3 @@
+SELECT aaa.* FROM (SELECT a.ID as "KEY", a.ACCOUNT as "VALUE" 
+FROM ACCOUNT a
+WHERE a.STATUS = 'S') as aaa

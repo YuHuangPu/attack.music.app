@@ -1,0 +1,2 @@
+SELECT DATE_FORMAT(MAX(gd.CREATE_DATE),'Last Updated at %Y-%m-%d %T') as "Max_Update"
+FROM GOODS_DETAIL gd

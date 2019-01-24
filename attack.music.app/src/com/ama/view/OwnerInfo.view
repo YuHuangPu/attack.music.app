@@ -1,0 +1,3 @@
+SELECT FORMAT(sum(g.COST), 0) as "Amount_Cost"
+FROM GOODS g
+WHERE g.STATUS = 'S';

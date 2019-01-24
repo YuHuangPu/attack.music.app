@@ -1,0 +1,13 @@
+SELECT CASE
+	WHEN a.password = ?
+    THEN
+		'TRUE'
+	ELSE
+		'FALSE'
+   END as "Is_Pass",
+   a.ACCOUNT as "Account",
+   a.EMAIL as "Email", 
+   a.Remark as "Remark", 
+   a.Id as "Id"
+FROM ACCOUNT a
+WHERE a.ACCOUNT = ? and STATUS = 'S';

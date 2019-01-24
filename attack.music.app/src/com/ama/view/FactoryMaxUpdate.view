@@ -1,0 +1,3 @@
+SELECT DATE_FORMAT(MAX(f.UPDATE_DATE),'Last Updated at %Y-%m-%d %T') as "Max_Update"
+FROM FACTORY f
+WHERE f.STATUS = 'S' 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/jsp/layout/layout.jsp">
+		<put-attribute name="title" value="AttackMusic" />
+		<put-attribute name="lib" value="" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="LayoutView" extends="baseLayout">
+		<put-attribute name="lib" value="/jsp/head/lib.jsp" />
+		<put-attribute name="menu" value="/jsp/head/menu.jsp" />
+		<put-attribute name="footer" value="/jsp/footer/footer.jsp" />
+	</definition>
+	
+</tiles-definitions>

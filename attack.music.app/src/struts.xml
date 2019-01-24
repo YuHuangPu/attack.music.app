@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="action, do"></constant>
+    
+    <!-- Add packages here -->
+    <package name="default" namespace="/" extends="struts-default">
+    
+    	<result-types>
+    		<result-type name="layout1" class="com.ama.common.MyTilesTemplateResult" />
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+	
+   		<default-action-ref name="index" />
+   		
+   		
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+        
+        <action name="index">
+        	<result name="">/index.jsp</result>
+        </action>
+        
+        <action name="home">
+        	<result name=""  type="layout1">/jsp/body/home.jsp</result>
+        </action>
+        
+        <action name="login" class="com.ama.action.LoginCheck" method = "execute">
+        	<result name="successful" type="redirect">ownerPage.action</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+        
+        <action name="ownerPage" class="com.ama.service.ownerPageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/ownerPage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+    	
+    	<action name="factoryPage" class="com.ama.service.factoryPageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/factoryPage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+        
+    	<action name="consumerPage" class="com.ama.service.consumerPageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/consumerPage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+        
+        <action name="transactionPage" class="com.ama.service.transactionPageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/transactionPage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+    	
+        <action name="reservePage" class="com.ama.service.reservePageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/reservePage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+        
+        <action name="trashPage" class="com.ama.service.trashPageManager" method = "execute">
+        	<result name="successful" type="layout1">/jsp/body/trashPage.jsp</result>
+        	<result name="fail">/index.jsp</result>
+        </action>
+        
+    </package>
+    
+</struts>

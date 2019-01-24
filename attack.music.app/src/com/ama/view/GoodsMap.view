@@ -1,0 +1,2 @@
+SELECT aaa.* FROM (SELECT a.ID as "KEY", a.NAME as "VALUE" 
+FROM GOODS a ) as aaa
