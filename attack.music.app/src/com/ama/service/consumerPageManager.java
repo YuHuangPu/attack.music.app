@@ -19,7 +19,7 @@ public class consumerPageManager extends com.ama.common.BaseManager{
 	public String execute(){
 		HttpServletRequest req;
 		try {
-			this.setConn(com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE));
+			this.setConn(com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE));
 			
 			Views consumerInfo = new Views(this.getConn(), Keys.View.ConsumerInfo);
 			JSONArray consumers = consumerInfo.getDatalistJSONArray(Boolean.FALSE);
@@ -51,6 +51,6 @@ public class consumerPageManager extends com.ama.common.BaseManager{
 			com.util.DataBaseUtil.closeConnection(this.getConn());
 			
 		}
-		return Keys.WEB_Successful;
+		return Keys.WEB_SUCCESSFUL;
 	}
 }

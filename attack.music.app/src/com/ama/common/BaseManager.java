@@ -73,7 +73,7 @@ public class BaseManager {
 	private void setMap(){
 		Connection conn = null ;
 		try{
-			conn = com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE);
+			conn = com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE);
 			Views accountMap = new Views(conn, Keys.View.AccountMap);
 			this.setAccountMap(queryMap(accountMap));
 			

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.ama.common.Keys;
+import com.ama.factory.SqlFactory;
 import com.ama.language.LanguageView;
 import com.ama.view.Views;
 import com.util.SessionUtil;
@@ -20,7 +21,7 @@ public class transactionPageManager extends com.ama.common.BaseManager {
 	public String execute() {
 		HttpServletRequest req;
 		try {
-			this.setConn(com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE));
+			this.setConn(com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE));
 
 			JSONObject accountMap = this.getAccountMap();
 			JSONObject goodsMap = this.getGoodsMap();
@@ -72,8 +73,8 @@ public class transactionPageManager extends com.ama.common.BaseManager {
 			Views maxUpdate = new Views(this.getConn(), Keys.View.GoodsDetailMaxUpdate);
 			JSONArray mUpdate = maxUpdate.getDatalistJSONArray(Boolean.FALSE);
 
-			Views factoryInfo = new Views(this.getConn(), Keys.View.FactoryInfo);
-			JSONArray factory = factoryInfo.getDatalistJSONArray(Boolean.FALSE);
+			Views vw = new Views(SqlFactory.getFactoryInfo(), this.getConn());
+			JSONArray factory = vw.getDatalistJSONArray(Boolean.FALSE);
 			itrs = factory.iterator();
 			while (itrs.hasNext()) {
 				JSONObject itr = (JSONObject) itrs.next();
@@ -130,7 +131,7 @@ public class transactionPageManager extends com.ama.common.BaseManager {
 		} finally {
 			com.util.DataBaseUtil.closeConnection(this.getConn());
 		}
-		return Keys.WEB_Successful;
+		return Keys.WEB_SUCCESSFUL;
 	}
 
 }

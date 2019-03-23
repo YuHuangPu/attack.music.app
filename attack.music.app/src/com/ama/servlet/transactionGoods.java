@@ -58,7 +58,7 @@ public class transactionGoods extends HttpServlet {
 		Connection conn = null;
 		try {
 			result = response.getWriter();
-			conn = DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.FALSE);
+			conn = DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.FALSE);
 			ora.json.JSONObject reqJson = com.util.JsonsUtil.getJsonObject(request);
 			result.append(execute(request, response, reqJson, conn));
 		} catch (Exception e) {
@@ -141,24 +141,23 @@ public class transactionGoods extends HttpServlet {
 
 	private void purchaseGoods(JSONObject reqJson, Connection conn, PreparedStatement pstmt, java.sql.Timestamp CreateDate, String userID) throws SQLException, JSONException, ParseException {
 		reqJson = reqJson.getJSONObject("OldGoods");
-		String sql = "UPDATE `GOODS` SET `RESERVE` = `RESERVE` + ?, "
-				// + "`COST` = (`COST` * `RESERVE` + ? )/(`RESERVE` + ?),
+		String sql = "UPDATE `GOODS` SET"
+				 + "`COST` = ((`COST` * `RESERVE` ) + ?)/(`RESERVE` + ?),  `RESERVE` = `RESERVE` + ?, "
 				// `PRICE` = (`PRICE` * `RESERVE` + ? )/(`RESERVE` + ?), "
 				+ "`REMARK` = ?, `UPDATE_DATE` = ?, `UPDATE_WHO` = ?, `PURCHASE` = `PURCHASE` + ?" + "WHERE `GOODS`.`ID` = ?;";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, reqJson.getString("GoodsAmount"));
-		// pstmt.setBigDecimal(2,
-		// reqJson.getBigDecimal("GoodsCost").multiply(reqJson.getBigDecimal("GoodsAmount")));
-		// pstmt.setString(3, reqJson.getString("GoodsAmount"));
+		 pstmt.setBigDecimal(1, reqJson.getBigDecimal("GoodsCost").multiply(reqJson.getBigDecimal("GoodsAmount")));
+		 pstmt.setString(2, reqJson.getString("GoodsAmount"));
+		 pstmt.setString(3, reqJson.getString("GoodsAmount"));
 		// pstmt.setBigDecimal(4,
 		// reqJson.getBigDecimal("GoodsPrice").multiply(reqJson.getBigDecimal("GoodsAmount")));
 		// pstmt.setString(5, reqJson.getString("GoodsAmount"));
 
-		pstmt.setString(2, reqJson.getString("GoodsRemark"));
-		pstmt.setTimestamp(3, CreateDate);
-		pstmt.setString(4, userID);
-		pstmt.setString(5, reqJson.getString("GoodsAmount"));
-		pstmt.setString(6, reqJson.getString("GoodsId"));
+		pstmt.setString(4, reqJson.getString("GoodsRemark"));
+		pstmt.setTimestamp(5, CreateDate);
+		pstmt.setString(6, userID);
+		pstmt.setString(7, reqJson.getString("GoodsAmount"));
+		pstmt.setString(8, reqJson.getString("GoodsId"));
 		pstmt.execute();
 
 		sql = "INSERT INTO `GOODS_DETAIL` (`ITEM`, `GOODS_ID`, `CONSUMER_ID`, `STATUS`, `AMOUNT`, `PRICE`, `SELL_DATE`, `REMARK`" + ", `CREATE_DATE`, `CREATE_WHO`)"

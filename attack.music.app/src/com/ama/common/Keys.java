@@ -1,17 +1,15 @@
 package com.ama.common;
 
 public class Keys {
-	public static final String Company = "AttackMusicDataSource";
-	public static final String CompanyJndiName = "java:/AttackMusicDataSource";
-	public static final String WEB_Successful = "successful";
-	public static final String WEB_Fail = "fail";
+	public static final String COMPANY = "AttackMusicDataSource";
+	public static final String COMPANY_JNDI_NAME = "java:/AttackMusicDataSource";
+	public static final String WEB_SUCCESSFUL = "successful";
+	public static final String WEB_FAIL = "fail";
 	
 	/* DataViewKey*/
 	public class View{
 		public static final String UserInfo = "UserInfo";
-		public static final String FactoryInfo = "FactoryInfo";
 		public static final String GoodsDetailInfo = "GoodsDetailInfo";
-		public static final String GoodsInfo = "GoodsInfo";
 		public static final String TransactionInfo = "TransactionInfo";
 		public static final String ConsumerInfo = "ConsumerInfo";
 		public static final String OwnerInfo = "OwnerInfo";

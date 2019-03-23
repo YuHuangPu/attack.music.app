@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<% if(((int)(Math.random()*100)) % 15 == 0){ %>
+<%
+	if (((int) (Math.random() * 100)) % 15 == 0) {
+%>
 <!-- 
 
 //
@@ -31,10 +33,12 @@
 //***************************************************
 
  -->
- 
- <%} else {
-	 
- }%>
+
+<%
+	} else {
+
+	}
+%>
 <html lang="en">
 <head>
 <meta HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8" />
@@ -45,24 +49,24 @@
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>
-<div class="allbody">
-<!-- menu start -->
-<div class="menu">
-    	<tiles:insertAttribute name="menu" />
-</div>	
-<!-- menu  end  -->
-    
-<!-- body start -->
-<div class="main">
-	<tiles:insertAttribute name="body" />
-</div>
-<!-- body  end  -->
-    
-<!-- footer start-->
-<div class="footer">
-    	<tiles:insertAttribute name="footer" />
-</div>
-<!-- footer end-->
-</div>
+	<div class="allbody">
+		<!-- menu start -->
+		<div class="menu">
+			<tiles:insertAttribute name="menu" />
+		</div>
+		<!-- menu  end  -->
+
+		<!-- body start -->
+		<div class="main">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<!-- body  end  -->
+
+		<!-- footer start-->
+		<div class="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
+		<!-- footer end-->
+	</div>
 </body>
 </html>

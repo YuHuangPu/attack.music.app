@@ -30,30 +30,30 @@ public class LoginCheck extends com.ama.data.info.UserInfo {
 		Connection conn = null ;
 		try{
 			this.setLoginStatus(Boolean.FALSE);
-			conn = com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE);
+			conn = com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE);
 			accountView = new Views(conn, Keys.View.UserInfo) ;
 			String MD5Password = com.util.EncryptUtil.EncryptString(this.getPassword());
 			accountView.setPstmt( MD5Password, this.getAccount());
 			JSONArray LoginAccount = accountView.getDatalistJSONArray(Boolean.FALSE);
 			if(LoginAccount.length() == 0 ){
-				return com.ama.common.Keys.WEB_Fail;
+				return com.ama.common.Keys.WEB_FAIL;
 			}
 			JSONObject Account = LoginAccount.getJSONObject(0);
 			if(Account.getBoolean("IsPass")){
 				loginDo(Account, conn);
-				return com.ama.common.Keys.WEB_Successful;
+				return com.ama.common.Keys.WEB_SUCCESSFUL;
 			}else{
-				return com.ama.common.Keys.WEB_Fail;
+				return com.ama.common.Keys.WEB_FAIL;
 			}
 					
 		}catch(SQLException e){
 			e.printStackTrace();
 			log.error(e.getMessage());
-			return com.ama.common.Keys.WEB_Fail;
+			return com.ama.common.Keys.WEB_FAIL;
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
-			return com.ama.common.Keys.WEB_Fail;
+			return com.ama.common.Keys.WEB_FAIL;
 		} finally{
 			com.util.DataBaseUtil.closeConnection(conn);
 			log.info(String.format("[ %s ] LoginStatus [ %s ]", this.getAccount(), this.getLoginStatus()));

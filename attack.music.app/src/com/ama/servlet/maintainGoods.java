@@ -54,7 +54,7 @@ public class maintainGoods extends HttpServlet {
 		Connection conn = null;
 		try {
 			result = response.getWriter();
-			conn = DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.FALSE);
+			conn = DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.FALSE);
 			ora.json.JSONObject reqJson = com.util.JsonsUtil.getJsonObject(request);
 			result.append(execute(request, response, reqJson, conn));
 		} catch (Exception e) {

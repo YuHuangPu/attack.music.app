@@ -15,213 +15,222 @@
 	</s:iterator> -->
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-  <!-- Navigation-->
- <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="ownerPage.action"><s:property value="lgView.getId('001')" /></a>
-        </li>
-        <li class="breadcrumb-item active"><s:property value="lgView.getId('013')" /></li>
-        
-      </ol>
-      <!-- Example DataTables Card-->
-		<div class="card mb-3">
-			<div class="card-header">
-				<i class="fas fa-dolly-flatbed fa-lg"></i> <s:property value="lgView.getId('013') + lgView.getId('003')" />
-				<a class="mr-3 btn btn-primary text-white" data-toggle="modal" data-target="#listModal">
-					<i class="fas fa-user-plus"></i>
-				</a>
-			</div>
-        
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th><s:property value="lgView.getId('005')" /></th>
-                  <th><s:property value="lgView.getId('006')" /></th>
-                  <th><s:property value="lgView.getId('013')" /></th>
-                  <th><s:property value="lgView.getId('044')" /></th>
-                  <th><s:property value="lgView.getId('015')" /></th>
-                  <th><s:property value="lgView.getId('016')" /></th>
-                  <th><s:property value="lgView.getId('002')" /></th>
-                  <th><s:property value="lgView.getId('010')" /></th>
-                  <th><s:property value="lgView.getId('017')" /></th>
-                  <th><s:property value="lgView.getId('012')" /></th>
-                </tr>
-              </thead>
-              <tbody>
-                <s:iterator value="#attr.gInfo" var="f" status="status">
-					<tr>
-	                  <td><a class="editGoods" href="" data-toggle="modal" data-target="#editModal"><s:property value='#f.get("Id")' /></a></td>
-	                  <td><s:property value='#f.get("Name")' /></td>
-	                  <td><s:property value='#f.get("Reserve")' /></td>
-	                  <td><s:property value='#f.get("Purchase") + " / " + #f.get("Sell")' /></td>
-	                  <td><s:property value='#f.get("Cost")' /></td>
-	                  <td><s:property value='#f.get("Price")' /></td>
-	                  <td factoryId=<s:property value='#f.get("Factory")' />><s:property value='#f.get("FactoryName")' /></td>
-	                  <td><s:property value='#f.get("Remark")' /></td>
-	                  <td><s:property value='#f.get("CreateWho")' /></td>
-	                  <td><s:property value='#f.get("UpdateDate")' /></td>
-	                </tr>
-				</s:iterator>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card-footer small text-muted"><s:property value='#attr.MaxUpdate' /></div>
-      </div>
-    </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
+	<!-- Navigation-->
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="ownerPage.action"><s:property value="lgView.getId('001')" /></a></li>
+				<li class="breadcrumb-item active"><s:property value="lgView.getId('013')" /></li>
 
-
-</div>
-  
-<div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="ModalLabel"><s:property value="lgView.getId('035')" /></h5>
-				<button class="btn btn-outline-primary" type="button" id="addList">
-					<s:property value="lgView.getId('029')" />
-				</button>
-				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<form id="reserveListForm">
-				<div class="modal-body">
-					<div class="form-group row">
-						<div class="col-md-7">
-							<label class="col-form-label"><s:property value="lgView.getId('002')" /></label>
-							<select class="form-control selectpicker show-tick" data-live-search="true" data-size="5" required >
-								<s:iterator value="#attr.factorys" var="f" status="status">
-									<option value="<s:property value='#f.get("Value")' />"><s:property value='#f.get("Text")' /></option>
+			</ol>
+			<!-- Example DataTables Card-->
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fas fa-dolly-flatbed fa-lg"></i>
+					<s:property value="lgView.getId('013') + lgView.getId('003')" />
+					<a class="mr-3 btn btn-primary text-white" data-toggle="modal" data-target="#listModal"> <i class="fas fa-user-plus"></i>
+					</a>
+				</div>
+				<div class="card-body">
+					<jsp:include page="/jsp/head/searchMenu.jsp"></jsp:include>
+					<div class="table-responsive">
+						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th><s:property value="lgView.getId('005')" /></th>
+									<th><s:property value="lgView.getId('006')" /></th>
+									<th><s:property value="lgView.getId('013')" /></th>
+									<th><s:property value="lgView.getId('044')" /></th>
+									<th><s:property value="lgView.getId('015')" /></th>
+									<th><s:property value="lgView.getId('016')" /></th>
+									<th><s:property value="lgView.getId('002')" /></th>
+									<th><s:property value="lgView.getId('010')" /></th>
+									<th><s:property value="lgView.getId('017')" /></th>
+									<th><s:property value="lgView.getId('012')" /></th>
+								</tr>
+							</thead>
+							<tbody>
+								<s:iterator value="#attr.gInfo" var="f" status="status">
+									<tr>
+										<td><a class="editGoods" href="" data-toggle="modal" data-target="#editModal"><s:property value='#f.get("Id")' /></a></td>
+										<td><s:property value='#f.get("Name")' /></td>
+										<td><s:property value='#f.get("Reserve")' /></td>
+										<td><s:property value='#f.get("Purchase") + " / " + #f.get("Sell")' /></td>
+										<td><s:property value='#f.get("Cost")' /></td>
+										<td><s:property value='#f.get("Price")' /></td>
+										<td factoryId=<s:property value='#f.get("Factory")' />><s:property value='#f.get("FactoryName")' /></td>
+										<td><s:property value='#f.get("Remark")' /></td>
+										<td><s:property value='#f.get("CreateWho")' /></td>
+										<td><s:property value='#f.get("UpdateDate")' /></td>
+									</tr>
 								</s:iterator>
-							</select>
-						</div>
-						<div class="col-md-5">
-							<div class=" rounded border border-info">
-								<div class="col-md-12 row"><label class="col-form-label"><s:property value="lgView.getId('024') + ' :'" /></label>
-									<p class="col-form-label">9999999</p>
-								</div>
-								<div class="col-md-12 row"><label class="col-form-label"><s:property value="lgView.getId('043') + ' :'" /></label>
-									<p class="col-form-label">9999999</p>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="card-footer small text-muted">
+					<s:property value='#attr.MaxUpdate' />
+				</div>
+			</div>
+		</div>
+		<!-- /.container-fluid-->
+		<!-- /.content-wrapper-->
+
+
+	</div>
+
+	<div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ModalLabel">
+						<s:property value="lgView.getId('035')" />
+					</h5>
+					<button class="btn btn-outline-primary" type="button" id="addList">
+						<s:property value="lgView.getId('029')" />
+					</button>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<form id="reserveListForm">
+					<div class="modal-body">
+						<div class="form-group row">
+							<div class="col-md-7">
+								<label class="col-form-label"><s:property value="lgView.getId('002')" /></label> <select class="form-control selectpicker show-tick" data-live-search="true" data-size="5"
+									required>
+									<s:iterator value="#attr.factorys" var="f" status="status">
+										<option value="<s:property value='#f.get("Value")' />"><s:property value='#f.get("Text")' /></option>
+									</s:iterator>
+								</select>
+							</div>
+							<div class="col-md-5">
+								<div class=" rounded border border-info">
+									<div class="col-md-12 row">
+										<label class="col-form-label"><s:property value="lgView.getId('024') + ' :'" /></label>
+										<p class="col-form-label">9999999</p>
+									</div>
+									<div class="col-md-12 row">
+										<label class="col-form-label"><s:property value="lgView.getId('043') + ' :'" /></label>
+										<p class="col-form-label">9999999</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-md-2">
-							<label class="col-form-label"><s:property value="lgView.getId('005')" /></label>
-							<input class="form-control" type="text" placeholder="0">
-						</div>
-						<div class="col-md-2">
-							<label class="col-form-label"><s:property value="lgView.getId('006')" /></label>
-							<input class="form-control" type="text"
+						<div class="form-group row">
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('005')" /></label> <input class="form-control" type="text" placeholder="0">
+							</div>
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('006')" /></label> <input class="form-control" type="text"
 									placeholder="<s:property value="lgView.getId('032') + lgView.getId('006')" />" required>
-						</div>
-						<div class="col-md-2">
-							<label class="col-form-label"><s:property value="lgView.getId('013')" /></label>
-							<input class="form-control" type="text"
-									placeholder="<s:property value="lgView.getId('032') + lgView.getId('013')" />" >
-						</div>
-						<div class="col-md-2">
-							<label class="col-form-label"><s:property value="lgView.getId('015')" /></label>
-							<input class="form-control" type="text"
-								placeholder="<s:property value="lgView.getId('032') + lgView.getId('015')" />" >
-						</div>
-						<div class="col-md-2">
-							<label class="col-form-label"><s:property value="lgView.getId('016')" /></label>
-							<input class="form-control" type="text"
-									placeholder="<s:property value="lgView.getId('032') + lgView.getId('016')" />" >
-						</div>
-						<div class="col-md-2">
-							<label  class="col-form-label"><s:property value="lgView.getId('010')" /></label>
-							<textarea class="form-control" type="text" placeholder="<s:property value="lgView.getId('010')" />" rows="1"></textarea>
+							</div>
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('013')" /></label> <input class="form-control" type="text"
+									placeholder="<s:property value="lgView.getId('032') + lgView.getId('013')" />">
+							</div>
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('015')" /></label> <input class="form-control" type="text"
+									placeholder="<s:property value="lgView.getId('032') + lgView.getId('015')" />">
+							</div>
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('016')" /></label> <input class="form-control" type="text"
+									placeholder="<s:property value="lgView.getId('032') + lgView.getId('016')" />">
+							</div>
+							<div class="col-md-2">
+								<label class="col-form-label"><s:property value="lgView.getId('010')" /></label>
+								<textarea class="form-control" type="text" placeholder="<s:property value="lgView.getId('010')" />" rows="1"></textarea>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal"><s:property value="lgView.getId('028')" /></button>
-					<button class="btn btn-primary text-white"><s:property value="lgView.getId('031')" /></button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-  
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="ModalLabel">aa</h5>
-				<button class="btn btn-outline-danger "><s:property value="lgView.getId('045')" /></button>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">
+							<s:property value="lgView.getId('028')" />
+						</button>
+						<button class="btn btn-primary text-white">
+							<s:property value="lgView.getId('031')" />
+						</button>
+					</div>
+				</form>
 			</div>
-			<form id="editGoodsForm">
-				<div class="modal-body ">
-					<div class="form-group row">
-						<label class="col-sm-3 col-form-label"><s:property value="lgView.getId('006')" /></label>
-						<div class="col-sm-9">
-							<input class="form-control" type="text"
-								placeholder="<s:property value="lgView.getId('032') + lgView.getId('035') + lgView.getId('006')" />" required >
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-3 col-form-label"><s:property value="lgView.getId('002')" /></label>
-						<div class="col-sm-9">
-							<select class="form-control selectpicker show-tick" data-live-search="true" data-size="5" >
-								<s:iterator value="#attr.factorys" var="f" status="status">
-									<option value="<s:property value='#f.get("Value")' />"><s:property value='#f.get("Text")' /></option>
-								</s:iterator>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-4">
-								<label class="col-form-label"><s:property value="lgView.getId('013')" /></label>
-								<div>
-									<input class="form-control" type="text"
-										placeholder="<s:property value="lgView.getId('032') + lgView.getId('013')" />" required>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<label class="col-form-label"><s:property value="lgView.getId('015')" /></label>
-								<div>
-									<input class="form-control" type="text"
-										placeholder="<s:property value="lgView.getId('032') + lgView.getId('038')" />" required>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<label class="col-form-label"><s:property value="lgView.getId('016')" /></label>
-								<div>
-									<input class="form-control" type="text"
-										placeholder="<s:property value="lgView.getId('032') + lgView.getId('039')" />" required>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label><s:property value="lgView.getId('010')" /></label>
-						<textarea class="form-control" placeholder=""></textarea>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary " type="button" data-dismiss="modal"><s:property value="lgView.getId('028')" /></button>
-					<button class="btn btn-primary text-white "><s:property value="lgView.getId('031')" /></button>
-				</div>
-			</form>
 		</div>
 	</div>
-</div>
+
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ModalLabel">aa</h5>
+					<button class="btn btn-outline-danger ">
+						<s:property value="lgView.getId('045')" />
+					</button>
+				</div>
+				<form id="editGoodsForm">
+					<div class="modal-body ">
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><s:property value="lgView.getId('006')" /></label>
+							<div class="col-sm-9">
+								<input class="form-control" type="text" placeholder="<s:property value="lgView.getId('032') + lgView.getId('035') + lgView.getId('006')" />" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><s:property value="lgView.getId('002')" /></label>
+							<div class="col-sm-9">
+								<select class="form-control selectpicker show-tick" data-live-search="true" data-size="5">
+									<s:iterator value="#attr.factorys" var="f" status="status">
+										<option value="<s:property value='#f.get("Value")' />"><s:property value='#f.get("Text")' /></option>
+									</s:iterator>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-4">
+									<label class="col-form-label"><s:property value="lgView.getId('013')" /></label>
+									<div>
+										<input class="form-control" type="text" placeholder="<s:property value="lgView.getId('032') + lgView.getId('013')" />" required>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label class="col-form-label"><s:property value="lgView.getId('015')" /></label>
+									<div>
+										<input class="form-control" type="text" placeholder="<s:property value="lgView.getId('032') + lgView.getId('038')" />" required>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label class="col-form-label"><s:property value="lgView.getId('016')" /></label>
+									<div>
+										<input class="form-control" type="text" placeholder="<s:property value="lgView.getId('032') + lgView.getId('039')" />" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label><s:property value="lgView.getId('010')" /></label>
+							<textarea class="form-control" placeholder=""></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary " type="button" data-dismiss="modal">
+							<s:property value="lgView.getId('028')" />
+						</button>
+						<button class="btn btn-primary text-white ">
+							<s:property value="lgView.getId('031')" />
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$('#searchMenuQuery').on('click', function(){
+		console.log("a");
+	})
 	
 	$('#editModal .modal-header button:eq(0)').on('click', function(e){
 		data = {};
@@ -239,7 +248,8 @@ $(document).ready(function(){
 				if(!response.status){
 					showError(response.message);
 				}else{
-					window.location.reload();
+					$('#searchMenuQuery').click();
+// 					window.location.reload();
 				}
 			}
 			,complete:function(){
@@ -274,7 +284,8 @@ $(document).ready(function(){
 				if(!response.status){
 					showError(response.message);
 				}else{
-					window.location.reload();
+					$('#searchMenuQuery').click();
+// 					window.location.reload();
 				}
 			}
 			,complete:function(){
@@ -365,23 +376,23 @@ $(document).ready(function(){
 		var $reserveListForm = $(this).parents('.modal-content').find('#reserveListForm .modal-body');
 		var newGoodsItem = $('<div></div>').addClass('form-group row');
 		
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<input />', {class:'form-control', type:'text', placeholder:'0'})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<input />', {'class':'form-control', type:'text', placeholder:'0'})
 		));
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<input />', {class:'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("006")}', required:true})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<input />', {'class':'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("006")}', required:true})
 		));
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<input />', {class:'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("013")}'})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<input />', {'class':'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("013")}'})
 		));
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<input />', {class:'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("015")}'})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<input />', {'class':'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("015")}'})
 		));
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<input />', {class:'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("016")}'})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<input />', {'class':'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("032")}${sessionScope.lgView.getId("016")}'})
 		));
-		newGoodsItem.append($('<div />', {class:'col-md-2'}).append(
-			$('<textarea />', {class:'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("010")}', rows:'1'})
+		newGoodsItem.append($('<div />', {'class':'col-md-2'}).append(
+			$('<textarea />', {'class':'form-control', type:'text', placeholder:'${sessionScope.lgView.getId("010")}', rows:'1'})
 		));
 		
 		$reserveListForm.append(newGoodsItem);

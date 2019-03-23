@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.ama.common.Keys;
+import com.ama.factory.SqlFactory;
 import com.ama.view.Views;
 import com.util.SessionUtil;
 import com.util.StringsUtil;
@@ -19,10 +20,9 @@ public class factoryPageManager extends com.ama.common.BaseManager{
 	public String execute(){
 		HttpServletRequest req;
 		try {
-			this.setConn(com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE));
-			
-			Views factoryInfo = new Views(this.getConn(), Keys.View.FactoryInfo);
-			JSONArray fInfo = factoryInfo.getDatalistJSONArray(Boolean.FALSE);
+			this.setConn(com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE));
+			Views vw = new Views(SqlFactory.getFactoryInfo(), this.getConn());
+			JSONArray fInfo = vw.getDatalistJSONArray(Boolean.FALSE);
 			JSONObject accountMap = this.getAccountMap();
 			Iterator<Object> itrs = fInfo.iterator();
 			while(itrs.hasNext()){
@@ -31,8 +31,6 @@ public class factoryPageManager extends com.ama.common.BaseManager{
 				if(!StringsUtil.isNull(itr.getString("UpdateWho")))
 				itr.put("UpdateWho", accountMap.getString(itr.getString("UpdateWho")));
 			}
-			
-			
 			Views maxUpdate = new Views(this.getConn(), Keys.View.FactoryMaxUpdate);
 			JSONArray mUpdate = maxUpdate.getDatalistJSONArray(Boolean.FALSE);
 			
@@ -45,6 +43,6 @@ public class factoryPageManager extends com.ama.common.BaseManager{
 		} finally{
 			com.util.DataBaseUtil.closeConnection(this.getConn());
 		}
-		return Keys.WEB_Successful;
+		return Keys.WEB_SUCCESSFUL;
 	}
 }

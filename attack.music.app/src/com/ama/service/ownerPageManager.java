@@ -15,7 +15,7 @@ public class ownerPageManager extends com.ama.common.BaseManager{
 	public String execute(){
 		HttpServletRequest req;
 		try {
-			this.setConn(com.util.DataBaseUtil.getConnection(Keys.CompanyJndiName, Boolean.TRUE));
+			this.setConn(com.util.DataBaseUtil.getConnection(Keys.COMPANY_JNDI_NAME, Boolean.TRUE));
 			Views ownerInfo = new Views(this.getConn(), Keys.View.OwnerInfo);
 			JSONArray oInfo = ownerInfo.getDatalistJSONArray(Boolean.FALSE);
 			String sql = "SELECT FORMAT(SUM(GD.PRICE), 0) AS `SUM`, GD.STATUS FROM GOODS_DETAIL GD WHERE GD.STATUS != 'N' GROUP BY GD.STATUS";
@@ -28,8 +28,8 @@ public class ownerPageManager extends com.ama.common.BaseManager{
 				result.put(itr.getString("Status"), itr.getString("Sum"));
 			}
 			sql = "SELECT A.SUM, A.SELL_DATE FROM ("
-					+"SELECT SUM(PRICE) AS SUM, DATE_FORMAT(SELL_DATE, '%m-%d')AS SELL_DATE FROM GOODS_DETAIL GROUP BY SELL_DATE ORDER BY SELL_DATE DESC  LIMIT 0, 15"
-					+") A ORDER BY SELL_DATE ASC;";
+					+"SELECT SUM(PRICE) AS SUM, DATE_FORMAT(SELL_DATE, '%y-%m-%d') AS SELL_DATE FROM GOODS_DETAIL GROUP BY SELL_DATE ORDER BY DATE_FORMAT(SELL_DATE, '%Y-%m-%d') DESC  LIMIT 0, 15"
+					+") A ORDER BY DATE_FORMAT(SELL_DATE, '%Y-%m-%d') ASC;";
 			Query = new Views(sql, this.getConn());
 			tempArray = Query.getDatalistJSONArray(Boolean.FALSE);
 			itrs = tempArray.iterator();
@@ -53,6 +53,6 @@ public class ownerPageManager extends com.ama.common.BaseManager{
 		} finally{
 			com.util.DataBaseUtil.closeConnection(this.getConn());
 		}
-		return Keys.WEB_Successful;
+		return Keys.WEB_SUCCESSFUL;
 	}
 }
