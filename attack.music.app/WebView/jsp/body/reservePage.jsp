@@ -35,7 +35,7 @@
 				<div class="card-body">
 					<jsp:include page="/jsp/head/searchMenu.jsp"></jsp:include>
 					<div class="table-responsive">
-						<table class="table table-bordered" id="" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
 									<th><s:property value="lgView.getId('005')" /></th>

@@ -51,12 +51,12 @@
 				<div class="col-lg-6">
 					<div class="card">
 					  <div class="card-header">
-					   	 <i class="fas fa-grin-stars fa-5x fa-spin" ></i>更新資訊 V20190324
+					   	 <i class="fas fa-grin-stars fa-5x fa-spin" ></i>更新資訊 V20190325
 					  </div>
 					  <div class="card-body">
 					    <blockquote class="blockquote mb-0">
-					      <p>..........</p>
-					      <footer class="blockquote-footer">黃子育 <cite title="Source Title">2019-03-24</cite></footer>
+					      <p>...</p>
+					      <footer class="blockquote-footer">黃子育 <cite title="Source Title">2019-03-25</cite></footer>
 					    </blockquote>
 					  </div>
 					</div>

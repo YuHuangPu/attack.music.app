@@ -2,7 +2,7 @@
     <wb-module deploy-name="attack.music.app">
         <wb-resource deploy-path="/" source-path="/WebView" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="attack.music.app"/>
         <property name="java-output-path" value="/attack.music.app/build/classes"/>
+        <property name="context-root" value="attack.music.app"/>
     </wb-module>
 </project-modules>

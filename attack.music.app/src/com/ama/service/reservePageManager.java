@@ -32,8 +32,9 @@ public class reservePageManager extends com.ama.common.BaseManager {
 
 			String goodsId = StringsUtil.eliminateNull(req.getParameter("goodsId"));
 			String goodsName = StringsUtil.eliminateNull(req.getParameter("goodsName"));
-			Views goods = new Views(SqlFactory.getReserveInfo("AND ID like ? AND NAME like ?"), this.getConn());
-			goods.setPstmt("%" + goodsId + "%", "%" + goodsName + "%");
+			String factory = StringsUtil.eliminateNull(req.getParameter("factory"));
+			Views goods = new Views(SqlFactory.getReserveInfo("AND ID like ? AND NAME like ? AND factory in (select f.id from factory f where f.name like ?)"), this.getConn());
+			goods.setPstmt("%" + goodsId + "%", "%" + goodsName + "%", "%" + factory + "%");
 			JSONArray gInfo = goods.getDatalistJSONArray(Boolean.FALSE);
 //			goods.getDatalistJSONArray(Boolean.FALSE);
 
@@ -52,8 +53,8 @@ public class reservePageManager extends com.ama.common.BaseManager {
 			JSONArray mUpdate = maxUpdate.getDatalistJSONArray(Boolean.FALSE);
 
 			Views vw = new Views(SqlFactory.getFactoryInfo(), this.getConn());
-			JSONArray factory = vw.getDatalistJSONArray(Boolean.FALSE);
-			itrs = factory.iterator();
+			JSONArray factoryData = vw.getDatalistJSONArray(Boolean.FALSE);
+			itrs = factoryData.iterator();
 			while (itrs.hasNext()) {
 				JSONObject itr = (JSONObject) itrs.next();
 				itr.put("Value", itr.getString("Id"));
@@ -62,7 +63,7 @@ public class reservePageManager extends com.ama.common.BaseManager {
 
 			req.setAttribute("gInfo", gInfo);
 			req.setAttribute("MaxUpdate", mUpdate.getJSONObject(0).getString("MaxUpdate"));
-			req.setAttribute("factorys", factory);
+			req.setAttribute("factorys", factoryData);
 			req.setAttribute("actionName", ActionContext.getContext().getName());
 			req.setAttribute("searchTemp", StringsUtil.eliminateNull(req.getParameter("searchTemp")));
 
@@ -82,8 +83,10 @@ public class reservePageManager extends com.ama.common.BaseManager {
 				StringsUtil.eliminateNull(req.getParameter("goodsId")), null);
 		Element name = new Input(new Label(lg.getId("006") + " : "), "form-control form-control-sm", "text",
 				"goodsName", StringsUtil.eliminateNull(req.getParameter("goodsName")), null);
+		Element factory = new Input(new Label(lg.getId("002") + " : "), "form-control form-control-sm", "text",
+				"factory", StringsUtil.eliminateNull(req.getParameter("factory")), null);
 
-		sm.setElements(Arrays.asList(id, name));
+		sm.setElements(Arrays.asList(id, name, factory));
 		req.setAttribute("searchMenu", sm);
 	}
 }
