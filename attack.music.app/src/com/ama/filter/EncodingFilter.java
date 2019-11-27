@@ -1,6 +1,7 @@
 package com.ama.filter;
 
 import java.io.IOException;
+import java.util.TimeZone;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -16,6 +17,7 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
+		TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
 		chain.doFilter(req, resp);
 	}
 

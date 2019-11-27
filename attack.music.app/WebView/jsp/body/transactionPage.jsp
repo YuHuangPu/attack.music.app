@@ -83,12 +83,17 @@
 				</div>
 			</div>
 
+					
 			<!-- Example DataTables Card-->
 			<div class="card mb-3">
 				<div class="card-header">
 					<i class="fas fa-hand-holding-usd fa-lg"></i>
 					<s:property value="lgView.getId('019')+lgView.getId('022')" />
+					<s:iterator value="#attr.titleText.keys()" var="k" status="status">
+						<s:property value='#k' />:$<s:property value='#attr.titleText.get(#k)' />/
+					</s:iterator>
 				</div>
+				<jsp:include page="/jsp/head/searchMenu.jsp"></jsp:include>
 				<s:iterator value="#attr.gdInfoKey" var="key" status="status">
 					<div class="accordion" id="accordionExample">
 						<div class="card">

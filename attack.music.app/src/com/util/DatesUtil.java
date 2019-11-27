@@ -2,7 +2,9 @@ package com.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DatesUtil{
 	public static final long Second = 1000;
@@ -56,6 +58,7 @@ public class DatesUtil{
 		return StringsUtil.isNull(d)?null:DateTimeFormat.parse(d.toString());
 	}
 	public static Date getValue(Object d,SimpleDateFormat format) throws ParseException{
+	    format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 		return StringsUtil.isNull(d)?null:format.parse(d.toString());
 	}
 //	public static String getValue(String d,SimpleDateFormat format) throws Exception{
@@ -101,4 +104,33 @@ public class DatesUtil{
 			return null;
 		}
 	}
+	public static Date[] getDateRangeByMonth(Date d){
+	    Date [] result = new Date[2];
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTime(d);
+	    cal.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+        cal.set(Calendar.DATE, 1);
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.AM_PM, Calendar.AM);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        
+        result[0] = (Date)cal.getTime().clone();
+        cal.add(Calendar.MONTH, 1);
+        cal.add(Calendar.MILLISECOND, -1);
+        result[1] = (Date)cal.getTime().clone();
+        return result;
+	}
+	public static Date todayLastTime(Date d){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        cal.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+        cal.set(Calendar.HOUR, 11);
+        cal.set(Calendar.AM_PM, Calendar.PM);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        return cal.getTime();
+    }
 }

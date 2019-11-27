@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Iterator;
@@ -166,7 +167,7 @@ public class transactionGoods extends HttpServlet {
 		pstmt.setString(1, reqJson.getString("GoodsId"));
 		pstmt.setString(2, reqJson.getString("GoodsAmount"));
 		pstmt.setBigDecimal(3, reqJson.getBigDecimal("GoodsCost").multiply(reqJson.getBigDecimal("GoodsAmount")));
-		pstmt.setDate(4, new java.sql.Date(com.util.DatesUtil.getValue(reqJson.getString("IDate"), com.util.DatesUtil.DateFormat).getTime()));
+		pstmt.setTimestamp(4, new java.sql.Timestamp(com.util.DatesUtil.getValue(reqJson.getString("IDate"), com.util.DatesUtil.DateFormat).getTime()+ 1000 * 60 *60 * 24));
 		pstmt.setString(5, reqJson.getString("GoodsRemark"));
 		pstmt.setTimestamp(6, CreateDate);
 		pstmt.setString(7, userID);
@@ -197,7 +198,7 @@ public class transactionGoods extends HttpServlet {
 		pstmt.setString(3, "O");
 		pstmt.setString(4, reqJson.getString("GoodsAmount"));
 		pstmt.setBigDecimal(5, reqJson.getBigDecimal("GoodsAmount").multiply(reqJson.getBigDecimal("GoodsPrice")));
-		pstmt.setDate(6, new java.sql.Date(com.util.DatesUtil.getValue(reqJson.getString("IDate"), com.util.DatesUtil.DateFormat).getTime()));
+		pstmt.setTimestamp(6, new Timestamp(com.util.DatesUtil.getValue(reqJson.getString("IDate"), com.util.DatesUtil.DateFormat).getTime() + 1000 * 60 *60 * 24));
 		pstmt.setString(7, reqJson.getString("GoodsRemark"));
 		pstmt.setTimestamp(8, CreateDate);
 		pstmt.setString(9, userID);
