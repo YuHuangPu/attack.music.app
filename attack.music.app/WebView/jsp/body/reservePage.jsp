@@ -226,7 +226,10 @@
 </body>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
+	
+	
 	
 	$('#searchMenuQuery').on('click', function(){
 		console.log("a");
@@ -434,7 +437,10 @@ $(document).ready(function(){
 		})
 		
 	};
-$setAutoTotal();
+	$setAutoTotal();
+	
+	
+
 });
 </script>
 

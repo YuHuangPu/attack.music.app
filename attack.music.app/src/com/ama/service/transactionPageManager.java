@@ -60,12 +60,26 @@ public class transactionPageManager extends com.ama.common.BaseManager {
                     ? (lgView.getId("020") + "/" + consumerMap.getString(itr.getString("ConsumerId")))
                     : (lgView.getId("014") + "/" + consumerMap.getString(itr.getString("ConsumerId")));
                 String text = String.format(lgView.getId("051"), itr.getInt("Count"), itr.getInt("Amount"),
-                    itr.getBigDecimal("Price").intValue(),
-                    itr.getBigDecimal("Gp").intValue());
-                if(itr.getBigDecimal("Gp").intValue() != 0) {
+                    itr.getBigDecimal("Price").intValue(), itr.getBigDecimal("Gp").intValue());
+                if (itr.getBigDecimal("Gp").intValue() != 0) {
                     String k = consumerMap.getString(itr.getString("ConsumerId"));
-                    int sum = titleText.has(k) ? titleText.getInt(k) + itr.getBigDecimal("Gp").intValue() : itr.getBigDecimal("Gp").intValue();
-                    titleText.put( k, sum);
+                    JSONObject j = new JSONObject();
+                    int gpSum = 0;
+                    int prSum = 0;
+                    int count = 0;
+                    if (titleText.has(k)) {
+                        j = titleText.getJSONObject(k);
+                        gpSum = j.getInt("gpSum");
+                        prSum = j.getInt("prSum");
+                        count = j.getInt("count");
+                    }
+                    gpSum += itr.getBigDecimal("Gp").intValue();
+                    prSum += itr.getBigDecimal("Price").intValue();
+                    count++;
+                    j.put("gpSum", gpSum);
+                    j.put("prSum", prSum);
+                    j.put("count", count);
+                    titleText.put(k, j);
                 }
                 dayMap.put(itr.getString("SellDate") + " - " + itr.getString("ConsumerId"), new JSONObject()
                     .put("description", itr.put("Status", status).put("text", text)).put("detail", new JSONArray()));
@@ -142,7 +156,6 @@ public class transactionPageManager extends com.ama.common.BaseManager {
             req.setAttribute("gdInfoMap", dayMap);
             req.setAttribute("titleText", titleText);
             req.setAttribute("MaxUpdate", mUpdate.getJSONObject(0).getString("MaxUpdate"));
-            
 
             req.setAttribute("factorys", factory);
             req.setAttribute("RGs", RGs);
@@ -177,6 +190,6 @@ public class transactionPageManager extends com.ama.common.BaseManager {
 
         sm.setElements(Arrays.asList(sDate, eDate));
         req.setAttribute("searchMenu", sm);
-        return ;
+        return;
     }
 }

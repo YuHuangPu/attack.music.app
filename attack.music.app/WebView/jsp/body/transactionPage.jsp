@@ -89,11 +89,42 @@
 				<div class="card-header">
 					<i class="fas fa-hand-holding-usd fa-lg"></i>
 					<s:property value="lgView.getId('019')+lgView.getId('022')" />
-					<s:iterator value="#attr.titleText.keys()" var="k" status="status">
-						<s:property value='#k' />:$<s:property value='#attr.titleText.get(#k)' />/
-					</s:iterator>
 				</div>
 				<jsp:include page="/jsp/head/searchMenu.jsp"></jsp:include>
+				
+					
+					
+					<div class="accordion" id="accordionExample1">
+						<div class="card">
+							<div class="card-header" id="t1">
+								<h5 class="mb-0">
+									<button class="btn btn-link" type="button" data-toggle="collapse"
+										data-target="#t1collapse" aria-expanded="true"
+										aria-controls="t1collapse">
+										<s:property value="lgView.getId('041')" />
+									</button>
+								</h5>
+							</div>
+
+							<div id="t1collapse" class="collapse" aria-labelledby="headingOne"
+								data-parent="#accordionExample1">
+								<div class="card-body">
+									<ul>
+										<s:iterator value="#attr.titleText.keys()" var="k" status="status">
+											<li>
+												<s:property value='#k' />(<s:property value='#attr.titleText.get(#k).get("count")' />)
+												<ul>
+												<li><s:property value="lgView.getId('014')" />: $<s:property value='#attr.titleText.get(#k).get("prSum")' /> </li>
+												<li><s:property value="lgView.getId('053')" />: $<s:property value='#attr.titleText.get(#k).get("gpSum")' /></li>
+												</ul>
+											</li>
+										</s:iterator>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				<s:iterator value="#attr.gdInfoKey" var="key" status="status">
 					<div class="accordion" id="accordionExample">
 						<div class="card">

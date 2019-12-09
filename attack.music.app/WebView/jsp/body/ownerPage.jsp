@@ -1,3 +1,6 @@
+<%@page import="com.util.DatesUtil"%>
+<%@page import="java.util.TimeZone"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="java.sql.Timestamp"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
@@ -52,12 +55,16 @@
 				<div class="col-lg-6">
 					<div class="card">
 					  <div class="card-header">
-					   	 <i class="fas fa-grin-stars fa-5x fa-spin" ></i>更新資訊 V20191127
+					   	 <i class="fas fa-grin-stars fa-5x fa-spin" ></i>更新資訊 V20191129
 					  </div>
 					  <div class="card-body">
 					    <blockquote class="blockquote mb-0">
-					      <p>o_o</p>
-					      <footer class="blockquote-footer">黃子育 <cite title="Source Title">2019-11-27</cite></footer>
+					      <p>肚子餓了, 記得吃飯</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FM7MFYoylVs?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>					      <p><%
+					      Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"));
+					      out.print("下面音響 : " + DatesUtil.DateTimeFormat.format(cal.getTime()));
+					      %></p>
+					      <footer class="blockquote-footer">黃子育 <cite title="Source Title">2019-11-29</cite></footer>
 					    </blockquote>
 					  </div>
 					</div>
